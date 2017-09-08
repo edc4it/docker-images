@@ -31,6 +31,5 @@ USER jboss
 
 VOLUME /home/jboss/jboss-eap-6.4/standalone/deployments
 
+
 CMD /bin/bash
-
-

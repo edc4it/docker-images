@@ -3,13 +3,13 @@ world database from http://pgfoundry.org/
 to build
 
 ```bash
-$ docker build -t edc4it/coursedb:2.0 .
+$ docker build -t edc4it/coursedb:2.1  -t edc4it/coursedb:latest  .
 ```
 
 to run
 
 ```bash
-$ docker run -p 5432:5432 -Pd --name coursedb edc4it/coursedb:2.0
+$ docker run -p 5432:5432 -Pd --name coursedb edc4it/coursedb
 
 ```
 

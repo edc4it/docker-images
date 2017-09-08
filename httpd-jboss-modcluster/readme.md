@@ -19,17 +19,17 @@ On the host set a hostname
  ```
 
 ## Configure JBoss
- 
+
 ### EAP 7 (WildFly 10)
 
 Start eap7
- 
+
 ```bash
 $ ./standalone.sh  -b jboss.localhost  \
    --server-config=standalone.xml \
    -Dorg.jboss.modcluster.USE_HOST_NAME=true
 ```
- 
+
 ```
 /subsystem=undertow/server=default-server/ajp-listener=ajp:add(socket-binding=ajp)
 /subsystem=undertow:write-attribute(name=instance-id,value=node1)
@@ -42,9 +42,9 @@ $ ./standalone.sh  -b jboss.localhost  \
 /subsystem=modcluster/mod-cluster-config=configuration:add(connector="ajp", advertise=false)
 /subsystem=modcluster/mod-cluster-config=configuration:list-add(name=proxies,value=proxy1)
 reload
-``` 
- 
-### EAP 6 
+```
+
+### EAP 6
 
 In the `standalone-ha.xml` change the `mod-cluster-config` configuration,
 set  `proxy-list` to `localhost:6666` and  `advertise` to `false`:
@@ -67,12 +67,13 @@ Then run jboss as follows
 $ ./standalone.sh  -b jboss.localhost  \
       --server-config=standalone-ha.xml \
       -Dorg.jboss.modcluster.USE_HOST_NAME=true
+      -Djboss.server.name=node1
 ```
 
 to run
 
 ```bash
-$ docker run -p 7070:80 -p 6666:6666 \
+$ docker run -p 7070:80 -p 7777:6666 \
    --rm --name mod_cluster \
    --add-host jboss.localhost:172.17.0.1  \
     com.edc4it/httpd-mod_cluster:1.0
