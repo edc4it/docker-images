@@ -8,9 +8,9 @@ CREATE SCHEMA evilcall;
 
 CREATE TABLE evilcall.customer (
   id SERIAL,
-  first_name VARCHAR(100) NOT NULL,
-  last_name VARCHAR(100) NOT NULL,
-  email VARCHAR(50) NOT NULL,
+  first_name VARCHAR(100) ,
+  last_name VARCHAR(100),
+  email VARCHAR(50) ,
   PRIMARY KEY (id)
 );
 
@@ -1043,7 +1043,7 @@ BEGIN
       NOW() + (random() * (NOW()+'31 days' - NOW())),
       time '00:00' + random() * (time '24:00' - time '00:00') ,
       random() * 60,
-      random() * 9999999999 + 1111111111);
+      floor(random() * 9999999999 + 1111111111));
   END LOOP;
 END
 $do$;
