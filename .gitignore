@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+*.class
+.directory
+**/distribution/*
+!**/distribution/*.md
+**/files/*
+!**/files/*.md
